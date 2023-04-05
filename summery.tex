@@ -1,0 +1,437 @@
+%\documentclass{article}
+\documentclass[openany,hebrew,ctexart]{book}
+
+%\documentclass{cej}
+\usepackage{fontspec}
+\usepackage{xeCJK} %调用 xeCJK 宏包
+%\setmainfont{BiauKai} %設定中文字型
+\setCJKmainfont{SimSun} %设置 CJK 主字体为 SimSun （宋体）
+\usepackage{fancyhdr,marginnote}
+%\usepackage{comment}
+\usepackage{forest}
+\usepackage{tabularx,dcolumn}
+\usepackage[paper=portrait,pagesize]{typearea}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{paracol}
+\usepackage[utf8]{inputenc}
+\usepackage{xfrac}%fraction分数
+%\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{wrapfig,booktabs, threeparttable,colortbl,float,pgfplotstable}
+
+\usepackage{pgfplots}
+\usepackage{pgf}
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit,automata}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\tikzset{
+>=stealth',
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    % fill=black!10,
+    draw=black, very thick,
+    text width=10em, 
+    minimum height=3em, 
+    text centered, 
+    on chain},
+  line/.style={draw, thick, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+  every join/.style={->, thick,shorten >=1pt},
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnode/.style={midway, right=2pt},
+}
+\tikzset{snake arrow/.style=
+{->,
+decorate,
+decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
+}
+
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{appendix}
+\usepackage{tabularx}
+\parindent=0pt
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Ligatures=TeX]{Arial}
+\usepackage[textwidth=16cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+
+
+
+\usepackage{amssymb}
+\usepackage{array,calc,makecell}
+\usepackage[column=0]{cellspace}
+\setlength{\cellspacetoplimit}{6pt}
+\setlength{\cellspacebottomlimit}{\cellspacetoplimit}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+
+
+
+\DeclareCaptionLabelSeparator{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+\captionsetup{%
+    singlelinecheck=off,
+    skip=2pt,
+    justification=centering,
+}
+
+%我们可以通过 setspace宏包提供的命令来调整行间距。比如在导言区添加如下内容，可以将行距设置为字号的 1.5 倍：
+\usepackage{setspace}
+\onehalfspacing
+ %在页眉左边写上我的名字，中间写上今天的日期，右边写上我的电话；页脚的正中写上页码；页眉和正文之间有一道宽为 0.4pt 的横线分割，可以在导言区加上如下几行
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\lhead{\author}
+%\lhead{\thepage}
+%\chead{\date}
+\chead{\thepage}
+\rhead{摩西五经}
+\lfoot{}
+%\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+%\renewcommand\thesection{\Roman{section}}
+%\renewcommand\thesubsection{\Alph{subsection}}
+
+\makeatletter
+% #1 - comparator
+% #2 - token list to sort
+\newcommand\sort[2]{%
+        \ifstrempty{#2}
+        {}% else
+        {%
+                \sort@begin#1{}#2\sort@s\sort@begin
+        }%
+}
+
+% helpers
+\def\sort@s{\sort@s}
+\def\ifsort@s#1{%
+        \ifx\sort@s#1%
+                \expandafter\@firstoftwo
+        \else
+                \expandafter\@secondoftwo
+        \fi
+}
+% #1 - comparator
+% #2 - tokens processed so far
+% #3 - smallest token so far
+% #4 - rest of the list
+\def\sort@begin#1#2#3#4\sort@begin{%
+        \ifsort@s{#4}
+        {%
+                \sortend{#3}%
+                \sort#1{#2}%
+        }% else
+        {%
+                \sort@go#1{#2}{#3}#4\sort@go
+        }%
+}
+
+%     #1 - comparator
+% #2 - tokens processed so far
+% #3 - smallest token so far
+% #4 - token under consideration
+% #5 - rest of the list
+\def\sort@go#1#2#3#4#5\sort@go{%
+        #1{#3}{#4}{\sort@output#1{#2}{#5}}%
+}
+% #1 - comparator
+% #2 - tokens processed so far
+% #3 - rest of the list
+% #4 - smaller of the two tokens
+% #5 - larger of the two tokens
+\def\sort@output#1#2#3#4#5{%
+        \ifsort@s{#3}
+        {%
+                \sortoutput{#4}%
+                \sort#1{#2{#5}}%
+        }% else
+        {%
+                \sort@begin#1{#2{#5}}{#4}#3\sort@begin
+        }%
+}
+
+\def\sort@numlt#1#2#3{%
+        \ifnumcomp{#1}<{#2}
+        {#3{#1}{#2}}% else
+        {#3{#2}{#1}}%
+}
+\def\sort@numgt#1#2#3{%
+        \ifnumcomp{#1}>{#2}
+        {#3{#1}{#2}}% else
+        {#3{#2}{#1}}%
+}
+
+\def\sort@alpha#1#2#3{%
+        \ifnumcomp{\pdfstrcmp{#1}{#2}}<{0}
+        {#3{#1}{#2}}% else
+        {#3{#2}{#1}}%
+}
+
+\def\sort@firstcol#1#2{%
+    \expandafter\expandafter\expandafter
+        \sort@fc@helper\expandafter#1#2#1#2%
+}
+
+\def\sort@fc@helper#1&#2\\#3&#4\\#5#6#7{%
+    \ifnumcomp{\pdfstrcmp{#1}{#3}}<{0}
+    {#7{#5}{#6}}% else
+    {#7{#6}{#5}}%
+}
+
+\newcommand*\sortnumlt{\sort\sort@numlt}
+\newcommand*\sortnumgt{\sort\sort@numgt}
+\newcommand*\sortalpha{\sort\sort@alpha}
+\newcommand*\sortfirstcol{\sort\sort@firstcol}
+\makeatother
+
+% Change these to change out the sort outputs.
+\newcommand*\sortoutput[1]{#1}
+\newcommand*\sortend[1]{#1}
+
+
+
+
+
+
+
+\KOMAoptions{paper=portrait,pagesize}
+\recalctypearea
+%设置页边距，推荐使用 geometry 宏包。可以在这里查看它的说明文档
+\usepackage{geometry}
+\geometry{papersize={17cm,15cm}}
+\geometry{left=1.5cm,right=2.cm,top=1.cm,bottom=1cm}
+%\usepackage[margin=0.5in]{geometry}
+\addtolength{\oddsidemargin}{-.15075in}
+\addtolength{\evensidemargin}{-.15075in}
+\addtolength{\textwidth}{0.75in}
+
+\addtolength{\topmargin}{0.275in}
+\addtolength{\textheight}{1.75in}
+\geometry{
+ a4paper,
+ total={190mm,257mm},
+ left=15mm,
+ top=20mm,
+ }
+ 
+ %4 level 
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+ 
+\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}} 
+
+\titlespacing{\section}{-0.5pt}{\parskip}{-\parskip}
+\titlespacing{\subsection}{-0.5pt}{\parskip}{-\parskip}
+\titlespacing{\subsubsection}{-0.5pt}{\parskip}{-\parskip}
+
+%\titlespacing\section{0pt}{12pt plus 2pt minus 8pt}{0pt plus 2pt minus 8pt}
+\titlespacing\subsection{0pt}{12pt plus 2pt minus 8pt}{0pt plus 2pt minus 8pt}
+\titlespacing\subsubsection{0pt}{12pt plus 2pt minus 8pt}{0pt plus 2pt minus 8pt}
+
+
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+{\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+
+%for including .pdf figure
+
+
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+
+\usepackage{cjhebrew} 
+\iffalse
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Sharelatex Example},
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+}
+\urlstyle{same}
+\fi
+\begin{document}
+
+
+%============================================
+%    目錄,圖目錄,表目錄
+%============================================
+\renewcommand\contentsname{目錄}
+\renewcommand\listfigurename{圖目錄}
+\renewcommand\listtablename{表目錄}
+\tableofcontents
+\thispagestyle{empty}
+\listoffigures
+\thispagestyle{empty}
+\listoftables
+\thispagestyle{empty}
+
+\makeatletter
+\let\origsection\section
+\renewcommand\section{\@ifstar{\starsection}{\nostarsection}}
+\newcommand\nostarsection[1]
+{\sectionprelude\origsection{#1}\sectionpostlude}
+\newcommand\starsection[1]
+{\sectionprelude\origsection*{#1}\sectionpostlude}
+\newcommand\sectionprelude{%
+  \vspace{.5em}
+}
+\newcommand\sectionpostlude{%
+  \vspace{0em}
+}
+\makeatother
+
+
+
+
+
+
+%\setcounter{tocdepth}{3}
+%\tableofcontents
+
+
+%摩西五经
+\include{AMoXiFiles/ChuangShiJi}
+\include{AMoXiFiles/ChuAiJi}
+\include{AMoXiFiles/LiWeiJi}% 
+\include{AMoXiFiles/MinShuJi}% 
+\include{AMoXiFiles/ShenMingJi}
+%历史书
+\include{BLiShiFiles/YL_yueshuya}%约书亚记
+\include{BLiShiFiles/YL_shishiji}%士阿师记，路得记
+\include{BLiShiFiles/YL_samuel1}%撒上
+\include{BLiShiFiles/YL_samuel2}%撒下
+\include{BLiShiFiles/YL_king1}%王上
+\include{BLiShiFiles/YL_king2}%王下
+\include{BLiShiFiles/YL_lidaizhi1}%代上
+\include{BLiShiFiles/YL_lidaizhi2}%代下
+
+%被掳归回
+\include{CBeiLuFiles/YL_yisila} %La
+\include{CBeiLuFiles/YL_niximi}%Ni
+\include{CBeiLuFiles/YL_yisitie1}%Si
+
+
+%诗歌书
+\include{EShiGeShuFiles/job} %
+\include{EShiGeShuFiles/PsalmVol1}%1-41
+\include{EShiGeShuFiles/PsalmVol2}%42-72
+\include{EShiGeShuFiles/PsalmVol3}%73-89
+\include{EShiGeShuFiles/PsalmVol4}%90-106
+\include{EShiGeShuFiles/PsalmVol51}%107-119
+\include{EShiGeShuFiles/PsalmVol52}%120-150
+\include{EShiGeShuFiles/proverbs}
+\include{EShiGeShuFiles/chuandaoshu}
+\include{EShiGeShuFiles/SongsOfSongs}
+
+%大先知书
+\include{DXianZhiFiles/YiSaiYa} %以赛亚
+\include{DXianZhiFiles/YeLiMi}%耶利米
+\include{DXianZhiFiles/YeLiMiAiGe}  %  耶利米哀歌
+\include{DXianZhiFiles/YiXiJie} %以西结
+\include{DXianZhiFiles/DanYiLi} %但以理
+%小先知书
+\include{DXianZhiFiles/HeXiA} %荷西阿书
+\include{DXianZhiFiles/Jeol} %约珥书
+\include{DXianZhiFiles/AMoSiShu}%阿摩斯书
+\include{DXianZhiFiles/EBaDiYa}%俄巴底亞書
+\include{DXianZhiFiles/YueNa}%约拿书
+\include{DXianZhiFiles/MiJia}%彌迦書
+\include{DXianZhiFiles/NaHong}%那鴻書
+\include{DXianZhiFiles/HaBaGu}%哈巴谷書
+\include{DXianZhiFiles/XiFanYa}% 西番雅書
+\include{DXianZhiFiles/YL_hagaishu}%哈该书
+\include{DXianZhiFiles/YL_sajialiya1}%撒迦利亚
+\include{DXianZhiFiles/YL_malaji}%玛拉基
+%总结
+\include{ZongJie/ChuangShiJi}%律法书总结
+\include{ZongJie/LiShiShuZongJie}%历史书总结
+\include{ZongJie/BeiLuGuiHui}%被掳归回总结
+\include{ZongJie/ShiPian}%诗篇的总结
+\include{EShiGeShuFiles/PsalmLetters}%诗篇的总结
+\include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
+\include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
+\include{ZongJie/soulBody}%先知书名词解释总结
+\iffalse
+\appendix
+\begin{appendices}
+\input{ZongJie/DiMingRenMing/DiMing}%
+\input{ZongJie/DiMingRenMing/RenMing}
+\end{appendices}
+\fi
+\end{document}
