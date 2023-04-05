@@ -1,0 +1,754 @@
+
+
+%\documentclass[a4paper,11pt]{report}
+
+
+
+\documentclass{ctexart}
+%\documentclass[a4paper,10pt]{book}
+%family tree
+%\documentclass[tikz,12pt]{standalone}
+%\usetikzlibrary{calc,positioning,backgrounds,arrows.meta}
+%\usepackage{forest}
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[utf8]{inputenc}  % Direkte Angabe von Umlauten im Dokument.
+\usepackage[left=1.0cm,right=1cm,top=1cm,bottom=1cm,includeheadfoot]{geometry} 
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{forest}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{booktabs, threeparttable}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[toc,page]{appendix}
+\usepackage{wrapfig,lipsum,booktabs}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usepackage{pgfplotstable}
+\usepackage{smartdiagram}
+\pgfplotsset{
+    width=\textwidth,
+}
+
+%\usetikzlibrary{shapes,arrows}
+% 中文化
+\usepackage{fontspec}
+\usepackage{xeCJK} %中英文字型可分開設定
+%\setmainfont{BiauKai} %設定中文字型
+
+
+%\usepackage{CJK}
+\usepackage{fancyhdr}
+%\usepackage{CJK,CJKspace}
+
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}%put 2 figures together
+\usepackage{mwe}
+\usepackage{subfig}
+%\usepackage{indentfirst}
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+
+\tikzset{
+>=stealth',
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    % fill=black!10,
+    draw=black, very thick,
+    text width=10em, 
+    minimum height=3em, 
+    text centered, 
+    on chain},
+  line/.style={draw, thick, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=6em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+  every join/.style={->, thick,shorten >=1pt},
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnode/.style={midway, right=2pt},
+}
+
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+
+%\usetikzlibrary{positioning,shapes,arrows}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\usepackage[raggedright]{titlesec}%section located at left
+%\titleformat{\subsection}{\raggedright\large\bfseries}{\thesubsection}{5em}{5em}
+
+%\pagestyle{empty}
+
+%\documentclass[12pt,a4paper]{port}
+%\documentclass[12pt,a4paper]{report}
+
+
+
+
+%\tableofcontents
+%\listoftables 
+%\listoffigures
+
+%\HRule{1pt}} 
+
+
+\begin{document}
+\title{\textbf{\textcolor{blue}{撒母耳記上}}}
+
+%============================================
+%    目錄,圖目錄,表目錄
+%============================================
+\renewcommand\contentsname{目錄}
+\renewcommand\listfigurename{圖目錄}
+\renewcommand\listtablename{表目錄}
+%\renewcommand\appendixname{附錄}
+%\renewcommand\thesection{\arabic{section}} 
+%\renewcommand\appendixname{附\ 录}
+\renewcommand\appendixpagename{附\ 录}
+
+%\makeatletter
+%\renewcommand\section{\@sAttach-tartsection
+% {section}{0}{\z@}%
+%{-2.5ex \@plus 10ex \@minus -.2ex}%
+%{2.3ex \@plus.2ex}%
+%{\normalfont\normalsize\CJKfamily{hei}}}
+%\makeatother
+
+
+%\renewcommand\thesection
+%    {\fbox{\thesection\Roman{section}}}
+\renewcommand\thesection{\Roman{section}}
+\renewcommand\thesubsection{\Alph{subsection}}
+%\renewcommand\thethesubsection{\arabic{subthesection}}
+
+
+\makeatletter
+\renewcommand\subsection{\@startsection
+ {subsection}{1}{8mm}%name, level, indent
+ {-0.1\baselineskip}%             beforeskip
+ {0.5\baselineskip}%            afterskip
+ %{\normalfont\normalsize\itshape}}% style
+ {\normalfont\Large\itshape}}% style
+ %{\Large\normalsize\itshape}}% style
+\makeatother
+%\titleformat{\subsection}{\raggedright\Large\bfseries}{\thesubsection}{}{}
+
+\renewcommand\thesubsubsection{\arabic{subsubsection}}
+\makeatletter
+\renewcommand\subsubsection{\@startsection
+ {subsubsection}{1}{16mm}%name, level, indent
+ {-0.2\baselineskip}%             beforeskip
+ {0.1\baselineskip}%            afterskip
+ {\large\large\itshape}}% style
+\makeatother
+
+%\renewcommand\thesubsubsubsection{\alph{subsubsubsection}}
+%\makeatletter
+%\renewcommand\subsubsection{\@startsection
+% {subsubsubsection}{1}{18mm}%name, level, indent
+% {-0.3\baselineskip}%             beforeskip
+% {0.15\baselineskip}%            afterskip
+% {\large\large\itshape}}% style
+%\makeatother
+
+\newcounter{subsubsubsection}[subsubsection]
+\def\subsubsubsectionmark#1{}
+\def\thesubsubsubsection {\thesubsubsection 
+      .\arabic{subsubsubsection}}
+\def\subsubsubsection{\@startsection
+      {subsubsubsection}{4}{\z@} {-3.25ex plus -1
+      ex minus -.2ex}{1.5ex plus .2ex}{\normalsize\bf}}
+\def\l@subsubsubsection{\@dottedtocline{4}{4.8em}
+      {4.2em}}
+      
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
+    {-3.25ex plus -1ex minus -0.2ex}%
+    {1.5ex plus 0.2ex}%
+    {\normalfont\normalsize\bfseries}}
+\makeatother      
+%\renewcommand\thesubsubsection{\parindent}{5em}
+%\thesubsubsection\setlength{\parindent}{5em}
+%\renewcommand\thesubsubsection{.9}
+%format={\normalsize\kaishu\hangafter=15}
+\tableofcontents
+\thispagestyle{empty}
+\listoffigures
+\thispagestyle{empty}
+\listoftables
+\thispagestyle{empty}
+
+
+\let\origdescription\description
+\renewenvironment{description}{
+  \setlength{\leftmargini}{5em}
+  \origdescription
+  \setlength{\itemindent}{5em}
+  \setlength{\labelsep}{\textwidth}
+}
+{\endlist}
+
+%\begin{CJK*}{GBK}{song}
+
+\pagestyle{fancy} \lhead{撒母耳記上} \rhead{Grace }
+
+\maketitle 
+
+
+
+
+\section{撒母耳（1-15)}
+\subsection{撒母耳時期（1-8)}
+\subsubsection{哈拿求子 1：1-18}
+
+\begin{forest}
+  for tree={
+    child anchor=west,
+    parent anchor=east,
+    grow=east,
+    draw,
+    anchor=west,
+    edge path={
+      \noexpand\path[\forestoption{edge}]
+        (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+        (!u.parent anchor)\forestoption{edge label};
+    },
+  }
+  [蘇弗[託戶[以利戶[耶羅罕[以利加拿[哈拿(妻)[撒母耳弟弟1][撒母耳弟弟2][撒母耳弟弟3][撒母耳妹妹1][撒母耳妹妹2][撒母耳[約珥][亞比亞]]][毗尼拿(妻)]]]]]
+  ]
+\end{forest}
+
+\begin{figure}%{.5\linewidth}
+\centering
+\includegraphics[width=5in]{fig/samuerHome}
+\caption{撒母耳的家鄉}
+\label{fig:sub1}
+\end{figure}%
+
+以法蓮山地的拉瑪瑣非有一個以法蓮人，名叫以利加拿,每年從本城上到示羅，敬拜祭祀萬軍之耶和華.他有兩個妻：一名哈拿,耶和華不使哈拿生育。哈拿在耶和華面前不住地祈禱，許願說：「萬軍之耶和華啊，你若垂顧婢女的苦情，眷念不忘婢女，賜我一個兒子，我必使他終身歸與耶和華，不用剃頭刀剃他的頭。」
+
+\subsubsection{撒母耳出生被奉獻 1：19-28，2：18-21}
+哈拿就懷孕。生了一個兒子，撒母耳.斷了奶，就把孩子帶上示羅，使他終身歸與耶和華。那孩子在祭司以利面前事奉耶和華。耶和華眷顧哈拿，他就懷孕生了三個兒子，兩個女兒。那孩子撒母耳在耶和華面前漸漸長大。 
+\\%\line
+
+\subsubsection{哈拿的讚美 2：1-11}
+
+\begin{description}\itemsep-20pt
+%\begin{itemize}
+%\begin{enumerate}
+\item 1)我要讚美耶和華
+\item 2)讚美耶和華的原因
+\item 3)世人的作為
+\item 4)耶和華的作為
+%\end{enumerate}
+\end{description}
+%\end{itemize}
+
+\subsubsection{以利和他的兩個兒子 2：12-17，22-26}
+\begin{forest}
+  for tree={
+    child anchor=west,
+    parent anchor=east,
+    grow=east,
+    draw,
+    anchor=west,
+    edge path={
+      \noexpand\path[\forestoption{edge}]
+        (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+        (!u.parent anchor)\forestoption{edge label};
+    },
+  }
+  [以利[何弗尼][非尼哈[亞希突[亞希亞(跟隨掃羅)][亞希米勒(被掃羅殺)[亞比亞他(跟隨大衛)]]][以迦博]]
+被  ]
+\end{forest}
+\begin{description}\itemsep-20pt
+%\begin{itemize}
+%\begin{enumerate}
+\item 1)以利的兩個兒子是惡人，不認識耶和華
+\item 2)他們藐視耶和華的祭物
+\item 3)他們與會幕門前伺候的婦人苟合
+%\end{enumerate}
+\end{description}
+以利年甚老邁，對他們說：我從這眾百姓聽見你們的惡行。我兒啊，不可這樣！我聽見你們的風聲不好，你們使耶和華的百姓犯了罪。人若得罪人，有士師審判他；人若得罪耶和華，誰能為他祈求呢？
+\\%\line
+
+
+\subsubsection{神人預言以利家遭報 2：27-36}
+\begin{description}\itemsep-20pt
+\item 1)以利的罪：踐踏獻在我居所的祭物，尊重你的兒子過於尊重我
+\item 2)對以利家的審判：
+\begin{description}\itemsep-20pt
+%\begin{enumerate}
+\item 我要折斷你的膀臂和你父家的膀臂，使你家中沒有一個老年人。
+\item 你必看見我居所的敗落。
+\item 那未滅的必使你眼目乾癟、心中憂傷。你家中所生的人都必死在中年。
+\item 兩個兒子必一日同死
+\item 我要為自己立一個忠心的祭司；他必永遠行在我的受膏者面前。
+\item 你家所剩下的人都必來叩拜他，求塊銀子，求個餅
+%\end{enumerate}
+\end{description}
+\end{description}
+
+\subsubsection{撒母耳被立為先知 3}
+\begin{description}\itemsep-20pt
+\item 1) 耶和華三次呼召撒母耳
+\item 2) 耶和華向撒母耳默示對以利家的審判：
+\begin{description}\itemsep-20pt
+\item 以利知道兒子作孽，自招咒詛，卻不禁止他們。
+\item 以利家的罪孽，雖獻祭奉禮物，永不能得贖去。
+\end{description}
+\item 3)從但到別是巴所有的以色列人都知道耶和華立撒母耳為先知
+\item 4)耶和華又在示羅顯現；將自己的話默示撒母耳，撒母耳就把這話傳遍以色列地
+\end{description}
+
+
+\subsubsection{約櫃被擄後被送回 4-7：2}
+\begin{figure}%{.5\linewidth}
+\centering
+\includegraphics[width=5in]{fig/feilishi}
+\caption{以色列人與非利士人打仗，喪失約櫃}
+\label{fig:sub1}
+\end{figure}%
+\begin{description}\itemsep-20pt
+\item 1) 約櫃被擄
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{1.2cm}|p{1.5cm}|p{2.1cm}|p{3.cm}| p{6cm}|}
+\hline
+\hline
+ 國家&安營 &		戰況 &	約櫃到了營中&戰況 \\\hline\hline
+以色列&以便以謝&死了4，000&	大聲歡呼地便震動& 死了30，000,以利的兩個兒子死了;以利作以色列的士師40年,98死在;以利的兒婦生完以迦博死了\\\hline
+非利士&亞弗&戰勝             &	懼怕&戰勝 \\\hline
+\end{tabular}
+\caption{以色列人與非利士人打仗}
+\end{table}
+\item 2) 約櫃在非利士 
+\begin{figure} 
+\centering
+\includegraphics[width=5in]{fig/hark}
+\caption{約櫃在非利士}
+\label{fig:sub1}
+\end{figure} 
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{4.3cm}|p{3.4cm}|p{1.6cm}|p{1.2cm}| p{5.4cm}|}
+\hline
+\hline
+亞實突&迦薩&亞實基倫&迦特&以革倫\\\hline
+大袞仆倒在耶和華的約櫃前,亞實突人生痔瘡&那城的人大大驚慌，無論大小都生痔瘡&&&城中的人有因驚慌而死的未曾死的人都生了痔瘡。合城呼號\\\hline
+\end{tabular}
+\caption{約櫃在非利士}
+\end{table}
+
+\item 3)約櫃被非利士人送回
+
+\item 4)約櫃到達以色列後
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{8cm}|p{8cm}|}
+\hline
+\hline
+伯示麥&基列耶琳\\\hline
+利未人將耶和華的約櫃和裝金物的匣子拿下來，放在大磐石上。當日伯示麥人將燔祭和平安祭獻給耶和華。耶和華因伯示麥人擅觀他的約櫃，就擊殺了他們七十人&基列耶琳人就下來，將耶和華的約櫃接上去，放在山上亞比拿達的家中，分派他兒子以利亞撒看守耶和華的約櫃。約櫃在基列耶琳許久。過了二十年，以色列全家都傾向耶和華\\\hline
+\end{tabular}
+\caption{約櫃到達以色列後}
+\end{table}
+
+\end{description}
+
+
+\subsubsection{撒母耳統治以色列 7}
+
+
+
+\begin{tabular}{ |l|l|l| }
+%\centering 
+\hline
+\multicolumn{3}{ |c| }{撒母耳統治以色列} \\
+\hline
+\multirow{3}{*}{米斯巴} & 以色列人 & 聚集在米斯巴，打水澆在耶和華面前，當日禁食,撒母耳在米斯巴審判以色列人\\ \cline{2-3}
+                        & 非利士人 & 非利士的首領就上來要攻擊以色列人。以色列人聽見，就懼怕非利士人。 \\\cline{2-3}
+                        & 耶和華 & 大發雷聲，驚亂非利士人，他們就敗在以色列人面前    \\\cline{2-3}
+                    &     撒母耳  &    將一塊石頭立在米斯巴和善的中間，給石頭起名叫以便以謝  \\\cline{2-3}        
+\hline
+%\caption{撒母耳統治以色列}
+\end{tabular}
+
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{16cm}|}
+\hline
+\hline
+以色列人從米斯巴出來，追趕非利士人，擊殺他們，直到伯甲的下邊,非利士人就被制伏\\\hline
+非利士人所取以色列人的城邑，從以革倫直到迦特，都歸以色列人了\\\hline
+那時以色列人與亞摩利人和好\\\hline
+每年巡行到伯特利、吉甲、米斯巴，在這幾處審判以色列人\\\hline
+撒母耳的家在拉瑪；也在那裡審判以色列人，且為耶和華築了一座壇。 \\\hline
+\end{tabular}
+\caption{撒母耳統治以色列}
+\end{table}
+
+\subsubsection{百姓要求立王 8}
+撒母耳年紀老邁，就立他兒子作以色列的士師。長子名叫約珥，次子名叫亞比亞；他們在別是巴作士師。他兒子不行他的道，貪圖財利，收受賄賂，屈枉正直。以色列的長老都聚集，來到拉瑪見撒母耳，求撒母耳立一個王治理以色列.耶和華允准百姓的請求。
+
+
+\subsection{掃羅做王時期（9-15)}
+
+\subsubsection{掃羅被膏作王 9-11}
+\begin{forest}
+  for tree={
+    child anchor=west,
+    parent anchor=east,
+    grow=east,
+    draw,
+    anchor=west,
+    edge path={
+      \noexpand\path[\forestoption{edge}]
+        (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+        (!u.parent anchor)\forestoption{edge label};
+    },
+  }
+  [瑪特利族[亞斐亞[洗羅[亞別[基士[掃羅[約拿單][亦施韋][麥基舒亞][米拉][米甲]]][尼珥[押尼珥(掃羅的元帥)]]]]]
+  ]
+\end{forest}
+\begin{figure} 
+\centering
+\includegraphics[width=5in]{fig/saoluoZhaoLu}
+\caption{掃羅找驢的路線}
+\label{fig:sub1}
+\end{figure}
+ 
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+\hline
+以法蓮山地&沙利沙地& 沙琳地& 便雅憫地& 蘇弗地&拉瑪 \\\hline
+\end{tabular}
+\caption{掃羅找驢的路線}
+\end{table}
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3cm}|p{13cm}|}
+\hline
+\hline
+地點 & 預兆\\\hline\hline
+在便雅憫境內的泄撒，靠近拉結的墳墓 &要遇見兩個人。他們必對你說：『你去找的那幾頭驢已經找著了。現在你父親不為驢掛心，反為你擔憂，說：我為兒子怎麼才好呢？』 \\\hline
+他泊的橡樹那裡 &必遇見三個往伯特利去拜神的人：一個帶著三隻山羊羔，一個帶著三個餅，一個帶著一皮袋酒。他們必問你安，給你兩個餅，你就從他們手中接過來。\\\hline
+ 此後你到神的山&在那裡有非利士人的防兵。你到了城的時候，必遇見一班先知從邱壇下來，前面有鼓瑟的、擊鼓的、吹笛的、彈琴的，他們都受感說話。耶和華的靈必大大感動你，你就與他們一同受感說話；你要變為新人。\\\hline
+\end{tabular}
+\caption{掃羅作王的三個預兆}
+\end{table}
+
+你當在我以先下到吉甲，我也必下到那裡獻燔祭和平安祭。你要等候七日，等我到了那裡，指示你當行的事。」撒母耳將百姓招聚到米斯巴耶和華那裡，掣籤掣出掃羅,撒母耳將國法對百姓說明，又記在書上，放在耶和華面前，然後遣散眾民，各回各家去了。掃羅往基比亞回家去 
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3cm}|p{12cm}|p{2cm}|}
+\hline
+\hline
+地點 & 事件 &經節 \\\hline\hline
+拉瑪 &撒母耳拿瓶膏油倒在掃羅的頭上，膏掃羅 & 10：1 \\\hline
+米斯巴 &撒母耳將百姓招聚到米斯巴耶和華那裡掣籤，就掣出掃羅作王& 10：21-24\\\hline
+吉甲 &基列雅比之戰後，眾百姓就到了吉甲那裡，在耶和華面前立掃羅為王，又在耶和華面前獻平安祭。掃羅和以色列眾人大大歡喜。& 11：14-15\\\hline 
+\end{tabular}
+\caption{掃羅作王的過程}
+\end{table}
+
+\begin{figure} 
+\centering
+\includegraphics[width=5in]{fig/jilieyabi}
+\caption{掃羅在基列雅比擊退亞捫人}
+\label{fig:sub1}
+\end{figure} 
+
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3.5cm}|p{12cm}|}
+\hline
+\hline
+地點 & 事件\\\hline\hline
+基列雅比 &亞捫人的王拿轄上來凌辱以色列眾人 \\\hline
+基比亞&使者到了掃羅住的基比亞，將這話說給百姓聽,掃羅聽見這話，就被神的靈大大感動,託付使者傳送以色列的全境\\\hline
+比色& 掃羅在比色數點他們：以色列人有三十萬，猶大人有三萬\\\hline 
+基列雅比亞捫人的營&羅將百姓分為三隊，在晨更的時候入了亞捫人的營，擊殺他們直到太陽近午，剩下的人都逃散，沒有二人同在一處的\\\hline 
+\end{tabular}
+\caption{掃羅在基列雅比擊退亞捫人}
+\end{table}
+
+\subsubsection{撒母耳對以色列人的勸導 12} 
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{13cm}|}
+\hline
+\hline
+耶和華就差遣摩西、亞倫領你們列祖出埃及，使他們在這地方居住。  \\\hline
+耶和華就差遣耶路巴力、比但、耶弗他、撒母耳救你們脫離四圍仇敵的手，你們才安然居住。 \\\hline
+ 你們見亞捫人的王拿轄來攻擊你們，就對我說：『我們定要一個王治理我們。』其實耶和華你們的神是你們的王。\\\hline
+ 於是撒母耳求告耶和華，耶和華就在這日打雷降雨，眾民便甚懼怕耶和華和撒母耳。 \\\hline
+\end{tabular}
+\caption{撒母耳的勸勉}
+\end{table}
+
+
+
+\subsubsection{掃羅與非利士人爭戰 13-14}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{fig/map1}
+        \caption{以色列和非利士軍隊布陣}
+        \label{fig:gull}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{fig/map3}
+        \caption{非利士營中出來三隊掠兵}
+        \label{fig:tiger}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{fig/map3_1}
+        \caption{A mouse}
+        \label{fig:mouse}
+    \end{subfigure}
+    \caption{Pictures of animals}\label{fig:animals}
+\end{figure}
+
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3.5cm}|p{12cm}|}
+\hline
+\hline
+地點 & 事件\\\hline\hline
+密抹和伯特利山 &二千跟隨掃羅在密抹和伯特利山 \\\hline
+基比亞&一千跟隨約拿單\\\hline
+迦巴& 約拿單攻擊迦巴、非利士人的防營，非利士人聽見了。掃羅就在遍地吹角意思說，要使希伯來人聽見。 \\\hline 
+吉甲&以色列眾人聽見掃羅攻擊非利士人的防營就跟隨掃羅聚集在吉甲。\\\hline 
+伯亞文東邊的密抹&非利士人聚集，要與以色列人爭戰，有車三萬輛，馬兵六千，步兵像海邊的沙那樣多\\\hline
+迦得和基列地&有些希伯來人過了約但河，逃到迦得和基列地。掃羅還是在吉甲\\\hline
+吉甲&掃羅還是在吉甲，百姓都戰戰兢兢地跟隨他。掃羅照著撒母耳所定的日期等了七日。撒母耳還沒有來到吉甲，百姓也離開掃羅散去了。掃羅就獻上燔祭。剛獻完燔祭，撒母耳就到了說：【現在你的王位必不長久。耶和華已經尋著一個合他心意的人，立他作百姓的君，因為你沒有遵守耶和華所吩咐你的。】 \\\hline
+基比亞&撒母耳就起來，從吉甲上到便雅憫的基比亞。\\\hline
+俄弗拉向書亞,伯和崙,洗波音谷對面&有掠兵從非利士營中出來，分為三隊\\\hline
+基比亞&掃羅在基比亞的儘邊，坐在米磯崙的石榴樹下，跟隨他的約有六百人\\\hline
+隘口&隘口兩邊各有一個山峰：一名播薛，一名西尼一峰向北，與密抹相對，一峰向南，與迦巴相對,約拿單和拿兵器的人起頭所殺的約有二十人，都在一畝地的半犁溝之內。地也震動，戰兢之勢甚大。\\\hline
+基比亞&掃羅的守望兵看見非利士的軍眾潰散，四圍亂竄。掃羅和跟隨他的人都聚集，來到戰場\\\hline
+以法蓮山地&那藏在以法蓮山地的以色列人聽說非利士人逃跑，就出來緊緊地追殺他們\\\hline
+伯亞文&那日，耶和華使以色列人得勝，一直戰到伯亞文\\\hline
+密抹,亞雅崙&這日，以色列人擊殺非利士人，從密抹直到亞雅崙。\\\hline
+&掃羅為耶和華築了一座壇，這是他初次為耶和華築的壇。百姓救約拿單免了死亡。\\\hline
+\end{tabular}
+\caption{掃羅與非利士人作戰}
+\end{table}
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+\hline
+摩押人 & 亞捫人 &以東人 &瑣巴諸王 &非利士人 &亞瑪力人\\\hline\hline
+\end{tabular}
+\caption{掃羅打敗四圍的一切仇敵}
+\end{table}
+ 
+\subsubsection{掃羅與亞瑪力人爭戰 15}
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3.5cm}|p{12cm}|}
+\hline
+\hline
+地點 & 事件\\\hline\hline
+提拉因 &掃羅招聚百姓數點他們，共有步兵二十萬，另有猶大人一萬 \\\hline
+亞瑪力的京城&掃羅到了亞瑪力的京城，在谷中設下埋伏\\\hline
+哈腓拉,埃及前的書珥&掃羅擊打亞瑪力人，從哈腓拉直到埃及前的書珥,生擒了亞瑪力王亞甲，用刀殺盡亞瑪力的眾民\\\hline
+迦密,吉甲&撒母耳清早起來，迎接掃羅。有人告訴撒母耳說：「掃羅到了迦密，在那裡立了紀念碑，又轉身下到吉甲。」\\\hline
+吉甲&撒母耳對掃羅說：「如此，今日耶和華使以色列國與你斷絕，將這國賜與比你更好的人。 
+1Sa 15:29  以色列的大能者必不至說謊，也不至後悔；因為他迥非世人，決不後悔。」撒母耳在吉甲耶和華面前將亞甲殺死。 \\\hline
+拉瑪&撒母耳回了拉瑪。撒母耳直到死的日子，再沒有見掃羅；但撒母耳為掃羅悲傷，是因耶和華後悔立他為以色列的王。 \\\hline
+基比亞&掃羅上他所住的基比亞，回自己的家去了。\\\hline
+\end{tabular}
+\caption{掃羅與亞瑪力人作戰}
+\end{table}
+
+\begin{figure} 
+\centering
+\includegraphics[width=5in]{fig/yamali}
+\caption{掃羅與亞瑪力人作戰}
+\label{fig:sub1}
+\end{figure} 
+
+\section{大衛（16-31)}
+\subsection{大衛被膏開始在掃羅面前服事（16-17）}
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2cm}|p{16cm}|}
+\hline
+\hline
+地點 & 事件\\\hline\hline
+伯利恆 &撒母耳就用角裡的膏油，在他諸兄中膏了他。從這日起，耶和華的靈就大大感動大衛。撒母耳起身回拉瑪去了。  \\\hline
+掃羅面前&從神那裡來的惡魔臨到掃羅身上的時候，大衛就拿琴，用手而彈，掃羅便舒暢爽快，惡魔離了他。 \\\hline
+梭哥& 非利士人招聚他們的軍旅，要來爭戰；聚集在屬猶大的梭哥，安營在梭哥和亞西加中間的以弗大憫。掃羅和以色列人也聚集，在以拉谷安營，擺列隊伍，要與非利士人打仗。大衛用機弦甩石，勝了那非利士人，打死他；大衛手中卻沒有刀。衛跑去，站在非利士人身旁，將他的刀從鞘中拔出來，殺死他，割了他的頭。非利士眾人看見他們討戰的勇士死了，就都逃跑。 \\\hline
+迦特,以革倫&以色列人和猶大人便起身吶喊，追趕非利士人，直到迦特（或作：該）和以革倫的城門。被殺的非利士人倒在沙拉音的路上，直到迦特和以革倫。 \\\hline
+耶路撒冷&大衛將那非利士人的頭拿到耶路撒冷，卻將他軍裝放在自己的帳棚裡.掃羅就立他作戰士長，眾百姓和掃羅的臣僕無不喜悅。\\\hline
+以色列各城&大衛打死了那非利士人，同眾人回來的時候，婦女們從以色列各城裡出來，歡歡喜喜，打鼓擊磬，歌唱跳舞，迎接掃羅王。眾婦女舞蹈唱和，說：「掃羅殺死千千，大衛殺死萬萬。」\\\hline
+\end{tabular}
+\caption{大衛被膏開始在掃羅面前服事}
+\end{table}
+
+
+
+\subsection{大衛在掃羅面前受逼迫（18-20）}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{18cm}|}
+\hline
+\hline
+% 事件\\\hline\hline
+次日，從神那裡來的惡魔大大降在掃羅身上，他就在家中胡言亂語。大衛照常彈琴，掃羅手裡拿著槍。掃羅把槍一掄，心裡說，我要將大衛刺透，釘在牆上。大衛躲避他兩次。 \\\hline
+所以掃羅使大衛離開自己，立他為千夫長，他就領兵出入。\\\hline
+掃羅的女兒米拉到了當給大衛的時候，掃羅卻給了米何拉人亞得列為妻。\\\hline
+掃羅對大衛說：「你今日可以第二次作我的女婿。」掃羅說：「你們要對大衛這樣說：『王不要什麼聘禮，只要一百非利士人的陽皮，好在王的仇敵身上報仇。』」掃羅的意思要使大衛喪在非利士人的手裡。日期還沒有到，大衛和跟隨他的人起身前往，殺了二百非利士人，將陽皮滿數交給王，為要作王的女婿。\\\hline
+掃羅對他兒子約拿單和眾臣僕說，要殺大衛；掃羅的兒子約拿單卻甚喜愛大衛。掃羅聽了約拿單的話，就指著永生的耶和華起誓說：「我必不殺他。」\\\hline
+從耶和華那裡來的惡魔又降在掃羅身上（掃羅手裡拿槍坐在屋裡），大衛就用手彈琴。掃羅用槍想要刺透大衛，釘在牆上；他卻躲開，掃羅的槍刺入牆內。當夜大衛逃走，躲避了。 \\\hline  
+掃羅打發人到大衛的房屋那裡窺探他，要等到天亮殺他。大衛的妻米甲對他說：「你今夜若不逃命，明日你要被殺。」\\\hline
+\end{tabular}
+\caption{大衛在掃羅面前時，謀害大衛的方式}
+\end{table}
+
+\subsection{大衛逃避掃羅時期（21-30）}
+
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{1.5cm}|p{15cm}|}
+\hline
+\hline
+地點 & 事件\\\hline\hline
+拉瑪 & 大衛逃避，來到拉瑪見撒母耳，將掃羅向他所行的事述說了一遍。 \\\hline
+拿約 & 大衛和撒母耳就往拿約去居住。  \\\hline
+拿約 & 掃羅打發人去捉拿大衛。去的人見有一班先知都受感說話，打發去的人也受神的靈感動說話。  \\\hline
+拿約 & 有人將這事告訴掃羅，他又打發人去，他們也受感說話。 \\\hline
+拿約  & 掃羅第三次打發人去，他們也受感說話。  \\\hline
+拿約&掃羅自己往拉瑪去，神的靈也感動他，一面走一面說話，直到拉瑪的拿約。他就脫了衣服，在撒母耳面前受感說話，一晝一夜露體躺臥。\\\hline
+田野 & 大衛從拉瑪的拿約逃跑，見約拿單。約拿單得知父親要殺大衛，告訴大衛，並與大衛立約 \\\hline
+挪伯 &祭司亞希米勒那裡.祭司給大衛非利士人歌利亞的刀。\\\hline
+迦特 &那日大衛起來，躲避掃羅，逃到迦特王亞吉那裡。 \\\hline
+亞杜蘭洞 &大衛就離開那裡，逃到亞杜蘭洞。跟隨他的約有四百人。 \\\hline
+米斯巴&大衛從那裡往摩押的米斯巴去，將父母搬到摩押王那裡 \\\hline
+哈列&先知迦得對大衛說：「你不要住在山寨，要往猶大地去。」大衛就離開那裡，進入哈列的樹林\\\hline
+基比亞的拉瑪&掃羅在基比亞的拉瑪，將祭司城挪伯中的男女、孩童、吃奶的，和牛、羊、驢盡都殺滅,亞希突的兒子亞希米勒有一個兒子，名叫亞比亞他，逃到大衛那裡\\\hline
+基伊拉& 非利士人攻擊基伊拉，大衛救了基伊拉的居民。大衛離開基伊拉逃走；於是掃羅不出來了。\\\hline
+西弗曠野的山地&掃羅天天尋索大衛，神卻不將大衛交在他手裡。掃羅的兒子約拿單起身見大衛，二人在耶和華面前立約。大衛仍住在樹林裡，約拿單回家去了。西弗人通知掃羅大衛藏身之處。 \\\hline
+瑪雲曠野南邊的亞拉巴& 羅和跟隨他的人去尋找大衛；有人告訴大衛，他就下到磐石，住在瑪雲的曠野。掃羅聽見，便在瑪雲的曠野追趕大衛。忽有使者來報告掃羅說：「非利士人犯境搶掠，請王快快回去！」於是掃羅不追趕大衛，回去攻打非利士人。因此那地方名叫西拉哈瑪希羅結。  \\\hline
+隱基底& 大衛住在隱基底的山寨裡。大衛割下掃羅外袍的衣襟,饒掃羅一命，掃羅就回家去\\\hline
+拉瑪& 撒母耳死了，以色列眾人聚集，為他哀哭，將他葬在拉瑪他自己的墳墓（原文作房屋）裡。\\\hline
+巴蘭的曠野&大衛起身，下到巴蘭的曠野。瑪雲有一個人，拿八的產業在迦密,羞辱大衛的僕人,耶和華擊打拿八，他就死了,他的妻子亞比該就作了大衛的妻。 \\\hline
+基比亞& 西弗人到基比亞見掃羅，說：「大衛不是在曠野前的哈基拉山藏著嗎？」掃羅就起身，帶領以色列人中挑選的三千精兵下到西弗的曠野，要在那裡尋索大衛。\\\hline
+哈基拉山&掃羅在曠野前的哈基拉山，在道路上安營。大衛和亞比篩夜間到了百姓那裡，從掃羅的頭旁拿了槍和水瓶，再次饒恕掃羅，掃羅回他的本處去了。 \\\hline
+迦特&大衛和跟隨他的六百人投奔迦特王瑪俄的兒子亞吉去了\\\hline
+洗革拉&當日亞吉將洗革拉賜給他，大衛在非利士地住了一年零四個月\\\hline
+書念&非利士人聚集，來到書念安營；\\\hline
+基利波&掃羅聚集以色列眾人在基利波安營。\\\hline
+隱多珥&掃羅求問交鬼婦人\\\hline
+亞弗&非利士人將他們的軍旅聚到亞弗,大衛和跟隨他的人回洗革拉\\\hline
+耶斯列泉&以色列人在耶斯列的泉旁安營\\\hline
+比梭溪&大衛和跟隨他的六百人來到比梭溪；有二百人疲乏不能前去,就留在那裡.凡亞瑪力人所擄去的，大衛都奪回來沒有失落一個。定律：上陣的得多少，看守器具的也得多少；大家平分。\\\hline
+\end{tabular}
+\caption{掃羅追殺大衛}
+\end{table}
+
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+\hline
+猶大的長老 & 住伯特利 &南地拉末 &雅提珥 &亞羅珥\\\hline
+息末 &以實提莫的拉哈勒 &耶拉篾各城 &基尼各城的\\\hline
+何珥瑪 &歌拉珊 &亞撻的希伯崙 &他們素來所到之處\\\hline
+\end{tabular}
+\caption{大衛從掠物中取些送禮物}
+\end{table}
+
+\subsection{掃羅的死（31）}
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2cm}|p{15cm}|}
+\hline
+\hline
+地點 &事件\\\hline\hline
+基利波&掃羅和他三個兒子，與拿他兵器的人，以及跟隨他的人，都一同死亡。\\\hline
+亞斯他錄廟&將掃羅的軍裝放在亞斯他錄廟裡\\\hline
+伯珊&他的屍身釘在伯珊的城牆上.基列雅比中間所有的勇士就起身，走了一夜，將掃羅和他兒子的屍身從伯珊城牆上取下來，送到雅比那裡，用火燒了；將他們骸骨葬在雅比的垂絲柳樹下，就禁食七日。\\\hline
+\end{tabular}
+\caption{大衛在掃羅面前時，謀害大衛的方式}
+\end{table}
+
+\begin{figure} 
+\centering
+\includegraphics[width=5in]{fig/dead}
+\caption{掃羅的死}
+\label{fig:sub1}
+\end{figure}
+
+
+
+	 
+  
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+%\include{Attach}  %% 参与的项目
+
+\end{document}
+

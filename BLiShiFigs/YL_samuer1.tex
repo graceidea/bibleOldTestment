@@ -1,0 +1,667 @@
+
+
+%\documentclass[a4paper,11pt]{report}
+
+
+
+\documentclass{ctexart}
+%\documentclass[a4paper,10pt]{book}
+%family tree
+%\documentclass[tikz,12pt]{standalone}
+%\usetikzlibrary{calc,positioning,backgrounds,arrows.meta}
+%\usepackage{forest}
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage[utf8]{inputenc}  % Direkte Angabe von Umlauten im Dokument.
+\usepackage[left=1.0cm,right=1cm,top=1cm,bottom=1cm,includeheadfoot]{geometry} 
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{forest}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{booktabs, threeparttable}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[toc,page]{appendix}
+\usepackage{wrapfig,lipsum,booktabs}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usepackage{pgfplotstable}
+\usepackage{smartdiagram}
+\pgfplotsset{
+    width=\textwidth,
+}
+
+%\usetikzlibrary{shapes,arrows}
+% 中文化
+\usepackage{fontspec}
+\usepackage{xeCJK} %中英文字型可分開設定
+%\setmainfont{BiauKai} %設定中文字型
+
+
+%\usepackage{CJK}
+\usepackage{fancyhdr}
+%\usepackage{CJK,CJKspace}
+
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}%put 2 figures together
+\usepackage{mwe}
+\usepackage{subfig}
+%\usepackage{indentfirst}
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+
+\tikzset{
+>=stealth',
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    % fill=black!10,
+    draw=black, very thick,
+    text width=10em, 
+    minimum height=3em, 
+    text centered, 
+    on chain},
+  line/.style={draw, thick, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=6em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+  every join/.style={->, thick,shorten >=1pt},
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnode/.style={midway, right=2pt},
+}
+
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit}
+
+%\usetikzlibrary{positioning,shapes,arrows}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\usepackage[raggedright]{titlesec}%section located at left
+%\titleformat{\subsection}{\raggedright\large\bfseries}{\thesubsection}{5em}{5em}
+
+%\pagestyle{empty}
+
+%\documentclass[12pt,a4paper]{port}
+%\documentclass[12pt,a4paper]{report}
+
+
+
+
+%\tableofcontents
+%\listoftables 
+%\listoffigures
+
+%\HRule{1pt}} 
+
+
+\begin{document}
+\title{\textbf{\textcolor{blue}{列王記上}}}
+
+%============================================
+%    目錄,圖目錄,表目錄
+%============================================
+\renewcommand\contentsname{目錄}
+\renewcommand\listfigurename{圖目錄}
+\renewcommand\listtablename{表目錄}
+%\renewcommand\appendixname{附錄}
+%\renewcommand\thesection{\arabic{section}} 
+%\renewcommand\appendixname{附\ 录}
+\renewcommand\appendixpagename{附\ 录}
+
+%\makeatletter
+%\renewcommand\section{\@sAttach-tartsection
+% {section}{0}{\z@}%
+%{-2.5ex \@plus 10ex \@minus -.2ex}%
+%{2.3ex \@plus.2ex}%
+%{\normalfont\normalsize\CJKfamily{hei}}}
+%\makeatother
+
+
+%\renewcommand\thesection
+%    {\fbox{\thesection\Roman{section}}}
+\renewcommand\thesection{\Roman{section}}
+\renewcommand\thesubsection{\Alph{subsection}}
+%\renewcommand\thethesubsection{\arabic{subthesection}}
+
+
+\makeatletter
+\renewcommand\subsection{\@startsection
+ {subsection}{1}{8mm}%name, level, indent
+ {-0.1\baselineskip}%             beforeskip
+ {0.5\baselineskip}%            afterskip
+ %{\normalfont\normalsize\itshape}}% style
+ {\normalfont\Large\itshape}}% style
+ %{\Large\normalsize\itshape}}% style
+\makeatother
+%\titleformat{\subsection}{\raggedright\Large\bfseries}{\thesubsection}{}{}
+
+\renewcommand\thesubsubsection{\arabic{subsubsection}}
+\makeatletter
+\renewcommand\subsubsection{\@startsection
+ {subsubsection}{1}{16mm}%name, level, indent
+ {-0.2\baselineskip}%             beforeskip
+ {0.1\baselineskip}%            afterskip
+ {\large\large\itshape}}% style
+\makeatother
+
+%\renewcommand\thesubsubsubsection{\alph{subsubsubsection}}
+%\makeatletter
+%\renewcommand\subsubsection{\@startsection
+% {subsubsubsection}{1}{18mm}%name, level, indent
+% {-0.3\baselineskip}%             beforeskip
+% {0.15\baselineskip}%            afterskip
+% {\large\large\itshape}}% style
+%\makeatother
+
+\newcounter{subsubsubsection}[subsubsection]
+\def\subsubsubsectionmark#1{}
+\def\thesubsubsubsection {\thesubsubsection 
+      .\arabic{subsubsubsection}}
+\def\subsubsubsection{\@startsection
+      {subsubsubsection}{4}{\z@} {-3.25ex plus -1
+      ex minus -.2ex}{1.5ex plus .2ex}{\normalsize\bf}}
+\def\l@subsubsubsection{\@dottedtocline{4}{4.8em}
+      {4.2em}}
+      
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
+    {-3.25ex plus -1ex minus -0.2ex}%
+    {1.5ex plus 0.2ex}%
+    {\normalfont\normalsize\bfseries}}
+\makeatother      
+%\renewcommand\thesubsubsection{\parindent}{5em}
+%\thesubsubsection\setlength{\parindent}{5em}
+%\renewcommand\thesubsubsection{.9}
+%format={\normalsize\kaishu\hangafter=15}
+\tableofcontents
+\thispagestyle{empty}
+\listoffigures
+\thispagestyle{empty}
+\listoftables
+\thispagestyle{empty}
+
+
+\let\origdescription\description
+\renewenvironment{description}{
+  \setlength{\leftmargini}{5em}
+  \origdescription
+  \setlength{\itemindent}{5em}
+  \setlength{\labelsep}{\textwidth}
+}
+{\endlist}
+
+%\begin{CJK*}{GBK}{song}
+
+\pagestyle{fancy} \lhead{列王記上} \rhead{Grace }
+
+\maketitle 
+
+
+
+
+\section{所羅門（1-11)}
+
+\subsection{所羅門被立為王（1)}
+大衛王年紀老邁,書念的童女亞比煞奉養王.
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\hline
+ 身份 &順從亞多尼雅    &  不順從亞多尼雅\\\hline\hline
+ 軍隊首領&洗魯雅的兒子約押 &耶何耶大的兒子比拿雅,大衛的勇士 \\\hline
+祭司   & 亞比亞他&撒督 \\\hline
+先知& & 拿單、示每、利以  \\\hline
+大衛的兒子 &王的眾子&　所羅門\\\hline
+\end{tabular}
+\caption{亞多尼雅在隱羅結旁、瑣希列磐石請客}
+\end{table}
+
+哈及的兒子亞多尼雅請客，自封為王，拔示巴拿單報知王。大衛命令祭司撒督和先知拿單到基訓膏所羅門作以色列的王.祭司撒督就從帳幕中取了盛膏油的角來，用膏膏所羅門。王就在床上屈身下拜所羅門.所羅門饒恕亞多尼雅
+
+\subsection{鞏固政權（2)}
+
+\begin{description}  
+\item   1) 大衛的遺訓 
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\hline
+  人物   & 事件 &處理意見 \\\hline\hline
+洗魯雅的兒子約押    & 太平之時殺尼珥的兒子押尼珥和益帖的兒子亞瑪撒 & 不容他白頭安然下陰間 \\\hline
+基列人巴西萊的眾子     & 躲避你哥哥押沙龍的時候，他們拿食物來迎接我&當恩他們，使他們常與你同席吃飯 \\\hline
+巴戶琳的便雅憫人，基拉的兒子示每    & 我往瑪哈念去的那日，他用狠毒的言語咒罵我&使他白頭見殺，流血下到陰間。  \\\hline
+\end{tabular}
+\caption{大衛的遺訓}
+\end{table}
+\item   2) 大衛作以色列王四十年：在希伯崙作王七年，在耶路撒冷作王三十三年 
+\item   3) 所羅門堅定國位 
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{1.5cm}|p{5cm}|p{8.5cm}|}
+\hline
+\hline
+  人物   &原因 & 結局  \\\hline\hline
+亞多尼雅 & 求書念的女子亞比煞為妻 & 耶何耶大的兒子比拿雅，將亞多尼雅殺死 \\\hline
+祭司亞比亞他     & 輔佐亞多尼雅,因你在我父親大衛面前抬過主耶和華的約櫃，又與我父親同受一切苦難&回亞拿突歸自己的田地去吧,祭司撒督代替亞比亞他,應驗耶和華在示羅論以利家所說的\\\hline
+約押    & 歸從了亞多尼雅&耶何耶大的兒子比拿雅殺死他在耶和華的帳幕，祭壇的旁邊,耶何耶大的兒子比拿雅作元帥，代替約押 \\\hline
+示每&違背王命出來過汲淪溪&耶何耶大的兒子比拿雅，他就去殺死示每\\\hline
+\end{tabular}
+\caption{所羅門堅定國位}
+\end{table}
+\end{description}
+
+\subsection{神在基遍初次向所羅門顯現（3)}
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\hline
+所羅門求的    &所羅門沒有求的         &神所應許的 \\\hline\hline
+賜我智慧聰明  & 求滅絕那恨你之人的性命&必賜你智慧聰明 \\\hline
+              & 大壽數                &長壽(你若效法你父親大衛，遵行我的道，謹守我的律例、誡命) \\\hline
+              &  富                       &富足\\\hline
+              &&尊榮\\\hline
+\end{tabular}
+\caption{神給所羅門的應許}
+\end{table}
+所羅門給兩個妓女斷案顯出他的智慧
+
+\subsection{所羅門的政權，財富及智慧（4)}
+
+\begin{description}
+\item  1) 所羅門的臣僕
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{3cm}|p{6cm}|}
+\hline
+\hline
+職位   &  人 \\\hline\hline
+祭司&撒督的兒子亞撒利雅\\\hline
+ 書記              &示沙的兩個兒子以利何烈、亞希亞\\\hline
+  史官                     &亞希律的兒子約沙法\\\hline
+ 元帥&耶何耶大的兒子比拿雅\\\hline
+ 祭司長  & 撒督,亞比亞他\\\hline
+眾吏長  & 拿單的兒子亞撒利雅\\\hline
+  領袖 & 王的朋友拿單的兒子撒布得\\\hline
+   家宰  &亞希煞 \\\hline
+ 掌管服苦的人 &亞比大的兒子亞多尼蘭 \\\hline
+ \end{tabular}
+\caption{所羅門的臣僕}
+\end{table}
+ 
+\item  2) 供給王和王家食物的官吏 
+ \begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{8cm}|p{8cm}|}
+\hline
+\hline
+支派   & 首領 \\\hline\hline
+ 以法蓮山地  &便戶珥 \\\hline 
+  瑪迦斯、沙賓、伯示麥、以倫伯哈南  &便底甲 \\\hline
+ 亞魯泊,他管理梭哥和希弗全地 & 便希悉\\\hline
+ 多珥山岡（或作：全境）  & 便亞比拿達,他娶了所羅門的女兒他法\\\hline  
+  他納和米吉多，並靠近撒拉他拿、耶斯列下邊的伯善全地,從伯善到亞伯米何拉直到約念之外   &亞希律的兒子巴拿 \\\hline
+基列的拉末,他管理在基列的瑪拿西子孫睚珥的城邑，巴珊的亞珥歌伯地的大城六十座  & 便基別\\\hline
+  瑪哈念 &易多的兒子亞希拿達 \\\hline 
+  拿弗他利    & 亞希瑪斯,他也娶了所羅門的一個女兒巴實抹\\\hline 
+  亞設和亞祿       & 戶篩的兒子巴拿\\\hline 
+     以薩迦       &帕路亞的兒子約沙法 \\\hline 
+     便雅憫          & 以拉的兒子示每\\\hline 
+       基列地，就是從前屬亞摩利王西宏和巴珊王噩之地           &烏利的兒子基別 \\\hline 
+\end{tabular}
+\caption{供給王和王家食物的官吏}
+\end{table}
+
+\item  3) 王和王家每日所用的食物
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\hline
+肥牛    &10隻     &草場的牛 &20  &羊  &100&   &  \\\hline\hline
+鹿      &      &       羚羊&  &  麍子 &  &肥禽     & \\\hline
+\end{tabular}
+\caption{王和王家每日所用的食物}
+\end{table}
+
+\item  4) 所羅門時期的版圖
+\begin{figure}%{.5\linewidth}
+\centering
+\includegraphics[width=5in]{fig/bantu}
+\caption{所羅門時期的版圖}
+\label{fig:sub1}
+\end{figure}%
+%\begin{subfigure}{.5\linewidth}
+
+
+\end{description}
+
+
+
+\subsection{所羅門建殿（5-8)}
+
+\subsubsection{所羅門建殿的準備工作（5)}
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\hline
+預備的人或料 &數量 &地點　\\\hline\hline
+扛抬的工人    &70,000    &以色列地所有寄居的外邦人 \\\hline
+鑿石頭的工人  & 80,000名 &以色列地所有寄居的外邦人 \\\hline
+又大又寶貴的石頭&用以立殿的根基\\\hline
+督工          & 3,300    & 以色列地所有寄居的外邦人  \\\hline
+%巧匠          & 1個      &從推羅王，善用金、銀、銅、鐵，和紫色、朱紅色、藍色線，並精於雕刻之工 \\\hline
+香柏木、松木&價錢：麥子20,000歌珥，清油20歌珥  &希蘭從利巴嫩浮海運到指定的地方\\\hline
+上利巴嫩服苦的人 & 30,000輪流每月一萬人上利巴嫩去；兩個月在家裡。亞多尼蘭掌管他們\\\hline
+%光亮的銅 &無數 & 約但平原疏割和撒利但中間藉膠泥鑄成\\\hline
+\end{tabular}
+\caption{所羅門建殿的準備}
+\end{table}
+
+
+
+
+\subsubsection{所羅門建殿的細節（6，7)}
+\begin{description}  
+\item   1) 所羅門建築神殿,至聖所
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{2cm}|p{12cm}|}
+\hline
+\hline
+位置      &方法    \\\hline\hline
+ 殿   & 長寬高=60x20x30肘,殿安置香柏木的棟梁，又用香柏木板遮蓋.殿裡面用香柏木板貼牆，從地到棚頂都用木板遮蔽，又用松木板鋪地.香柏木上面刻著野瓜和初開的花,全殿都貼上金子\\\hline
+ 內殿& 長寬高=60x20x30肘.就是至聖所，從地到棚頂用香柏木板遮蔽,牆面都貼上精金,內、外殿的地板都貼上金子,所羅門在位第四年西弗月，立了耶和華殿的根基,十一年布勒月，就是八月，殿和一切屬殿的都按著樣式造成。他建殿的工夫共有七年\\\hline
+ 外殿& 長四十肘,精金貼了殿內的牆\\\hline
+殿前的廊子   & 長寬闊=20x20x10肘  \\\hline
+窗櫺    & 為殿做了嚴緊的窗櫺\\\hline
+旁屋& 靠著殿牆，圍著外殿內殿，造了三層旁屋,下層寬五肘，中層寬六肘，上層寬七肘,殿右邊當中的旁屋有門，門內有旋螺的樓梯，可以上到第二層，從第二層可以上到第三層.每層高五肘，香柏木的棟梁擱在殿牆坎上\\\hline
+壇& 用香柏木做壇，包上精金 \\\hline
+內殿門扇、門楣、門框& 用橄欖木製造,門口有牆的五分之一,都貼上金子 \\\hline
+門框& 用橄欖木製造外殿的門框，門口有牆的四分之一\\\hline
+門& 用松木做門兩扇。這扇分兩扇，是摺疊的；那扇分兩扇；也是摺疊的\\\hline
+內院& 用鑿成的石頭三層、香柏木一層建築\\\hline
+\end{tabular}
+\caption{神的殿}
+\end{table}
+
+\item   2) 建築內的基路伯 
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{2.5cm}|p{12cm}|}
+\hline
+\hline
+位置      &方法    \\\hline\hline
+ 內殿    & 用橄欖木做兩個基路伯，各高十肘.路伯有兩個翅膀，各長五肘，從這翅膀尖到那翅膀尖共有十肘,高十肘.基路伯的翅膀是張開的，這基路伯的一個翅膀挨著這邊的牆，那基路伯的一個翅膀挨著那邊的牆，裡邊的兩個翅膀在殿中間彼此相接.用金子包裹二基路伯    \\\hline
+內外殿的牆上   & 刻著基路伯、棕樹，和初開的花   \\\hline
+兩門扇上   & 在橄欖木做的兩門扇上刻著基路伯、棕樹，和初開的花，都貼上金子\\\hline
+盆座撐子和心子上 & 刻著基路伯、獅子，和棕樹，周圍有瓔珞\\\hline
+\end{tabular}
+\caption{神殿中的基路伯}
+\end{table}
+
+\item   3) 所羅門其他的工程
+ \begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{2.5cm}|p{12cm}|}
+\hline
+\hline
+工程      &時間    \\\hline\hline
+ 聖殿   & 7年  \\\hline
+利巴嫩林宮 & 13年  \\\hline
+法老的女兒建造一宮   & \\\hline
+\end{tabular}
+\caption{所羅門其他的工程}
+\end{table}
+
+
+%\item   4) 戶蘭造了兩根柱子:雅斤，波阿斯  
+
+\item   4) 戶蘭造銅器具 
+\begin{table}[!hbp]
+\centering
+\begin{tabular}{|p{2.5cm}|p{12cm}|}
+\hline
+\hline
+名稱      & 備註   \\\hline\hline
+銅柱子  & 兩根，每根高十八肘，圍十二肘\\\hline
+柱頂&用銅鑄了兩個柱頂安在柱上，各高五肘,柱頂上有裝修的網子和擰成的鍊索，每頂七個.網子周圍有兩行石榴遮蓋柱頂.廊子的柱頂徑四肘，刻著百合花.兩柱頂的鼓肚上挨著網子，各有兩行石榴環繞，兩行共有二百.他將兩根柱子立在殿廊前頭：右邊立一根，起名叫雅斤；左邊立一根，起名叫波阿斯。\\\hline
+%銅壇    & 一座  &  長x寬x高 =20x20x10肘 & \\\hline
+銅海   &  樣式是圓的，高五肘，徑十肘，圍三十肘,在海邊之下，周圍有野瓜的樣式；每肘十瓜，共有兩行，是鑄海的時候鑄上的        \\\hline
+銅牛  & 有十二隻銅牛馱海：三隻向北，三隻向西，三隻向南，三隻向東；海在牛上，牛尾都向內.海厚一掌，邊如杯邊，又如百合花，可容二千罷特 \\\hline
+盆座&每座長寬高4x4x3肘,四面都有心子，心子在邊子當中,心子上有獅子和牛，並基路伯；邊上有小座，獅子和牛以下有垂下的瓔珞。每盆座有四個銅輪和銅軸。小座的四角上在盆以下，有鑄成的盆架，其旁都有瓔珞。小座高一肘，口是圓的，彷彿座的樣式，徑一肘半，在口上有雕工，心子是方的，不是圓的。四個輪子在心子以下，輪軸與座相連，每輪高一肘半。輪的樣式如同車輪；軸、輞、輻、轂都是鑄的。每座四角上都有盆架，是與座一同鑄成的。座上有圓架，高半肘；座上有撐子和心子，是與座一同鑄的。 \\\hline
+盆&每盆可容四十罷特。盆徑四肘，在那十座上，每座安設一盆。五個安在殿門的右邊，五個放在殿門的左邊；又將海放在殿門的右旁，就是南邊。 \\\hline
+盆、鏟子，和盤子&用光亮的銅為耶和華的殿造成的,是遵王命在約但平原、疏割和撒拉旦中間藉膠泥鑄成的。\\\hline
+\end{tabular}
+\caption{戶蘭造銅器具}
+\end{table}
+
+\item   5) 殿中的金器具
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{||p{2.5cm}|p{12cm}||}
+\hline
+\hline
+金壇    & 神殿裡的\\\hline
+桌子  &  陳設餅\\\hline
+金燈臺& 內殿前的精金燈臺：右邊五個，左邊五個\\\hline
+並其上的金花、燈盞、蠟剪&\\\hline
+金的杯、盤、鑷子、調羹、火鼎&\\\hline
+至聖所、內殿的門樞，和外殿的門樞&\\\hline
+\end{tabular}
+\caption{殿中的金器具}
+\end{table}
+
+\end{description}  
+
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{3cm}|p{3cm}|p{7cm}|p{7cm}|}
+\hline
+\hline
+ &猶太曆 &		節期 &	西曆 \\\hline\hline
+1&尼散月或亞筆月&逾越節&	三至四月間\\\hline
+2&以珥月&補逾越節&	四至五月間\\\hline
+3&西彎月& 七七節（五旬節）&	五至六月間\\\hline
+4&搭模斯月&		&六至七月間\\\hline
+5&埃波月	&	&七至八月間\\\hline
+6&以祿月&&		八至九月間\\\hline
+7&提斯利月或以他念月	& 吹角節、10 贖罪日、15-21 住棚節、22 嚴肅會	&九至十月間\\\hline
+8&瑪西班月&	&十至十一月間\\\hline
+9&基斯流月& 提別月修殿節	&十一至十二月間\\\hline
+10  &提別月  &	&十二至一月間\\\hline
+11  &細罷特月&	&一月至二月間\\\hline
+12L &第一亞達月2&&	二至三月間\\\hline
+12 &亞達月／第二亞達月& 普珥節&\\\hline
+\end{tabular}
+\caption{猶太曆及西曆}
+\end{table}
+
+
+
+	 
+  
+
+
+
+\subsubsection{他念月在節前運送聖器具及約櫃（8：1-13)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|c|c|}
+\hline
+\hline
+大衛分別為聖的金銀和器皿  &  放在神殿的府庫裡\\\hline
+約櫃(裡有兩塊石版)從大衛城就是錫安運上來   &  至聖所,放在兩個基路伯的翅膀底下     \\\hline
+會幕和會幕的一切聖器具都帶上來&     \\\hline
+和華的榮光充滿&神的殿\\\hline
+\end{tabular}
+\caption{運送聖器具及約櫃}
+\end{table}
+
+
+\subsubsection{所羅門的禱告（8：14-61)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{4cm}|p{5cm}|p{6.5cm}|}
+\hline
+\hline
+各種境況 & 禱告蒙應允的條件 & 向神的祈求\\\hline\hline
+你僕人和你民以色列 &  向此處祈禱的時候  & 求你從天上你的居所垂聽，垂聽而赦免   \\\hline
+人若得罪鄰舍，有人叫他起誓&    他來到這殿，在你的壇前起誓&求你從天上垂聽，判斷你的僕人，定惡人有罪，照他所行的報應在他頭上；定義人有理，照他的義賞賜他。 \\\hline
+你的民以色列若得罪你，敗在仇敵面前&回心轉意承認你的名，在這殿裡向你祈求禱告&求你從天上垂聽，赦免你民以色列的罪，使他們歸回你賜給他們和他們列祖之地  \\\hline
+你的民因得罪你，你懲罰他們，使天閉塞不下雨&他們若向此處禱告，承認你的名，離開他們的罪&求你在天上垂聽，赦免你僕人和你民以色列的罪，將當行的善道指教他們，且降雨在你的地，就是你賜給你民為業之地\\\hline
+國中若有饑荒、瘟疫、旱風、霉爛、蝗蟲、螞蚱，或有仇敵犯境，圍困城邑，無論遭遇什麼災禍疾病&你的民以色列，或是眾人，或是一人，自覺災禍甚苦，向這殿舉手，無論祈求什麼，禱告什麼&求你從天上你的居所垂聽赦免。你是知道人心的，要照各人所行的待他們,使他們在你賜給我們列祖之地上一生一世敬畏你，遵行你的道\\\hline
+論到不屬你民以色列的外邦人&為你的大名和大能的手，並伸出來的膀臂，從遠方而來，向這殿禱告  &求你從天上你的居所垂聽，照著外邦人所祈求的而行，使天下萬民都認識你的名，敬畏你，像你的民以色列一樣，又使他們知道我建造的這殿是稱為你名下的\\\hline
+你的民若奉你的差遣，無論往何處去與仇敵爭戰& 向你所選擇的城與我為你名所建造的殿禱告 &求你從天上垂聽他們的禱告祈求，使他們得勝\\\hline
+你的民若得罪你（世上沒有不犯罪的人），你向他們發怒，將他們交給仇敵擄到或遠或近之地 & 他們若在擄到之地想起罪來，回心轉意，懇求你說：『我們有罪了，我們悖逆了，我們作惡了』 他們若在擄到之地盡心盡性歸服你，又向自己的地，就是你賜給他們列祖之地和你所選擇的城，並我為你名所建造的殿禱告； &求你從天上你的居所垂聽你民的禱告祈求，為他們伸冤，赦免他們的過犯,使他們在擄他們的人面前蒙憐恤。因為他們是你的子民，你的產業，是你從埃及領出來脫離鐵爐的。  \\\hline
+\end{tabular}
+\caption{所羅門的禱告}
+\end{table}
+
+
+\subsubsection{獻殿禮（8：62-66)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{4cm}|p{12cm}|}
+\hline
+\hline
+主角 &事件\\\hline\hline
+王和眾民& 在耶和華面前獻祭    \\\hline
+%祭司& 侍立，各供其職,在眾人面前吹號\\\hline
+%利未人&拿著耶和華的樂器,頌讚耶和華\\\hline
+所羅門和以色列眾人&那時，所羅門和以色列眾人，就是從哈馬口直到埃及小河所有的以色列人，都聚集成為大會，在耶和華我們的神面前守節七日又七日，共十四日。第八日，王遣散眾民；他們都為王祝福。因見耶和華向他僕人大衛和他民以色列所施的一切恩惠，就都心中喜樂，各歸各家去了。\\\hline
+\end{tabular}
+\caption{獻殿禮}
+\end{table}
+
+
+\subsection{神二次向所羅門顯現（9：1-9)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{1cm}|p{4cm}|p{12cm}|}
+\hline
+\hline
+主角 & 條件 &結果\\\hline\hline
+所羅門& 若在我面前效法你父大衛所行的，遵行我一切所吩咐你的，謹守我的律例典章  & 我就必堅固你的國位，正如我與你父大衛所立的約，說：『你的子孫必不斷人作以色列的王。』   \\\hline
+所羅門和以色列人   &倘若你們和你們的子孫轉去不跟從我，不守我指示你們的誡命律例，去事奉敬拜別神，&我就必將以色列人從我賜給他們的地上剪除，並且我為己名所分別為聖的殿也必捨棄不顧，使以色列人在萬民中作笑談，被譏誚。這殿雖然甚高，將來經過的人必驚訝、嗤笑，說：『耶和華為何向這地和這殿如此行呢？』人必回答說：『是因此地的人離棄領他們列祖出埃及地之耶和華他們的神，去親近別神，事奉敬拜他，所以耶和華使這一切災禍臨到他們。』  \\\hline
+\end{tabular}
+\caption{神二次向所羅門顯現}
+\end{table}
+
+
+\subsection{所羅門其他政績（9：10-28)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{16cm}|}
+\hline
+\hline
+ 建造耶和華殿和王宮這兩所二十年才完畢了。\\\hline
+ 重新修築希蘭送給他的那些城邑，使以色列人住在那裡  \\\hline
+ 推羅王希蘭曾照所羅門所要的，資助他香柏木、松木，和金子；所羅門王就把加利利地的二十座城給了希蘭。希蘭給所羅門一百二十他連得金子。\\\hline
+ %往哈馬瑣巴去，攻取了那地方 \\\hline
+ %建造曠野裡的達莫，又建造哈馬所有的積貨城\\\hline
+ 所羅門建造基色、下伯和崙、巴拉，並國中曠野裡的達莫 \\\hline
+ 建造巴拉並國中曠野裡的達莫\\\hline
+ 又建造所有的積貨城，並屯車和馬兵的城，與耶路撒冷、利巴嫩，以及自己治理的全國中所願建造的。\\\hline
+ 不屬以色列人的挑取他們的後裔作服苦的奴僕; 以色列人作他的戰士、軍長的統領、車兵長、馬兵長
+ \\\hline
+所羅門王在以東地紅海邊，靠近以祿的以旬迦別製造船隻。坐船航海到了俄斐，從那裡得了四百二十他連得金子，運到所羅門王那裡\\\hline
+ \end{tabular}
+\caption{所羅門其他政績1}
+\end{table}
+
+
+	 
+\subsection{示巴女王拜見所羅門（10：1-13)}
+
+
+
+\subsection{所羅門的尊榮（10：14-29)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{16cm}|}
+\hline
+\hline
+希蘭差遣他的臣僕同著所羅門的僕人到了俄斐，得了420他連得金子和寶石，運到所羅門王那裡\\\hline\hline　
+示巴女王將120他連得金子和寶石，與極多的香料送給所羅門王；\\\hline
+每年所得的金子共有六百六十六他連得\\\hline
+商人並且亞拉伯諸王與屬國的省長都帶金銀給所羅門\\\hline
+所羅門王用錘出來的金子打成擋牌200面，每面用金子600舍客勒\\\hline
+錘出來的金子打成盾牌300面，每面用金子3彌那\\\hline
+用象牙製造一個大寶座，用精金包裹\\\hline
+一切的飲器都是金的，利巴嫩林宮裡的一切器皿都是精金的\\\hline
+戰車1,400輛/價銀六百舍客勒，有馬兵12,000,馬價銀/150舍客勒\\\hline
+%所羅門統管諸王，從大河到非利士地，直到埃及的邊界\\\hline
+\end{tabular}
+\caption{所羅門的尊榮}
+\end{table}
+
+\subsection{所羅門離棄神（11：1-13)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{4cm}|p{6cm}|}
+\hline
+\hline
+埃及法老的女兒&\\\hline
+摩押女子&可憎的神基抹\\\hline
+亞捫女子&可憎的神摩洛,可憎的神米勒公\\\hline
+以東女子&\\\hline
+西頓女子&女神亞斯他錄\\\hline
+赫人女子&\\\hline
+耶路撒冷&對面的山上建築邱壇。\\\hline
+\end{tabular}
+\caption{所羅門隨從的外邦女子及她們的神}
+\end{table}
+
+
+\subsection{所羅門的敵人（11：14-40)}
+\begin{table}[!hbp]
+\centering 
+\begin{tabular}{|p{2cm}|p{14cm}|}
+\hline
+\hline
+以東人&哈達是以東王的後裔,先前大衛攻擊以東，元帥約押上去葬埋陣亡的人，將以東的男丁都殺了。約押和以色列眾人在以東住了六個月，直到將以東的男丁盡都剪除。那時哈達還是幼童；他和他父親的臣僕，幾個以東人逃往埃及。法老將王后答比匿的妹子賜他為妻。答比匿的妹子給哈達生了一個兒子，名叫基努拔。\\\hline
+瑣巴人&以利亞大的兒子利遜興起,他先前逃避主人瑣巴王哈大底謝。衛擊殺瑣巴人的時候，利遜招聚了一群人，自己作他們的頭目，往大馬色居住，在那裡作王。他恨惡以色列人，且作了亞蘭人的王。 \\\hline
+以法蓮支派的洗利達人&所羅門的臣僕、尼八的兒子耶羅波安也舉手攻擊王。他母親是寡婦，名叫洗魯阿。他舉手攻擊王的緣故，乃由先前所羅門建造米羅，修補他父親大衛城的破口。耶羅波安是大有才能的人。所羅門見這少年人殷勤，就派他監管約瑟家的一切工程。示羅人先知亞希雅對耶羅波安說：「你可以拿十片。耶和華以色列的神如此說：『我必將國從所羅門手裡奪回，將十個支派賜給你。 \\\hline
+\end{tabular}
+\caption{所羅門隨從的外邦女子及她們的神}
+\end{table}
+
+
+\subsection{所羅門壽終（11：41-43)}
+所羅門在耶路撒冷作以色列眾人的王共四十年。葬在他父親大衛的城裡。他兒子羅波安接續他作王。
+
+
+
+
+  
+
+
+
+%\include{Attach}  %% 参与的项目
+
+\end{document}
+
