@@ -6,8 +6,9 @@
 *.fls
 *.lot
 *.out
-*.synctex.gz
+*.gz
 *.toc
 *.mf
 *.fdb_latexmk
+*.webp
 
