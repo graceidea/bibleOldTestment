@@ -2,7 +2,7 @@
 \documentclass[openany,hebrew,ctexart]{book}
 
 %\documentclass{cej}
-\usepackage{fontspec}
+\usepackage{fontspec,titletoc,footnote}
 \usepackage{xeCJK} %调用 xeCJK 宏包
 %\setmainfont{BiauKai} %設定中文字型
 \setCJKmainfont{SimSun} %设置 CJK 主字体为 SimSun （宋体）
@@ -19,19 +19,24 @@
 %\usepackage{enumitem}
 \usepackage{multirow}
 \usepackage{etoolbox}
-\usepackage{wrapfig,booktabs, threeparttable,colortbl,float,pgfplotstable}
 
+\usepackage{wrapfig,booktabs, threeparttable,colortbl,float,pgfplotstable,xcolor}
+
+%\newcommand{\ricardo}[1]{\colorbox{RED}{\color{white}   \textsf{\textbf{Ricardo}}} \textcolor{ForestGreen}{#1}}
+\definecolor{RED}{RGB}{34,139,34}
+\colorlet{RED}{red}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
 \usepackage{pgfplots}
 \usepackage{pgf}
 
 
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
+\usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing,snakes}
 \usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit,automata}
 \usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
     decorations.pathreplacing,decorations.pathmorphing,shapes,%
-    matrix,shapes.symbols}
+    shapes.symbols}
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -71,7 +76,25 @@
 decorate,
 decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 }
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
 
+
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{-2pt}%
+\setlength{\leftmargin}{20pt}%
+\setlength{\rightmargin}{20pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
 
 \usepackage{color}
 \usepackage{mathtools}
@@ -97,7 +120,8 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+%=======================NEW
 
 
 
@@ -310,6 +334,27 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 
 \usepackage{smartdiagram}
 \usesmartdiagramlibrary{additions}
+\usepackage[toc,page]{appendix}
+%\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{floatrow}
+\usepackage{graphicx}
+\usepackage{smartdiagram}
+\usepackage{cjhebrew} 
+\usepackage{float}%table{H}
+\usepackage{verbatim}%\begin{document}\end{comment}
+\usepackage{colortbl}
+\usepackage{rotating}%sidewaystable}
+\usepackage{lastpage}
+%\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\usepackage{fancyhdr}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\pagestyle{fancy}
+\usepackage{lipsum}
+\usepackage{colortbl,longtable}
+%\usepackage[flushleft]{threeparttable}
 
 \usepackage{cjhebrew} 
 \iffalse

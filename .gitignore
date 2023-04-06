@@ -11,4 +11,6 @@
 *.mf
 *.fdb_latexmk
 *.webp
+*.nav
+*.snm
 
