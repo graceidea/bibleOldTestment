@@ -18,8 +18,8 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{multirow,tabularx}
-\usepackage{etoolbox}
-\usepackage{wrapfig,booktabs,threeparttable,float,lipsum}
+\usepackage{etoolbox,marginnote}
+\usepackage{wrapfig,booktabs,threeparttable,lipsum}
 
 \usepackage{graphicx}%figure
 \usepackage{sidecap}%figure
@@ -29,8 +29,9 @@
 %\pgfplotsset{
  %   width=matrix\textwidth,
 %}
-\usepackage{tikz}
-\usetikzlibrary{snakes,arrows,automata}
+\usepackage{tikz,tikz-qtree}
+\newcommand{\per}[1]{\parbox{2.5cm}{#1}}
+\usetikzlibrary{snakes,arrows,automata,arrows.meta}
 \usetikzlibrary{shapes.geometric,shapes.arrows,decorations.pathmorphing}
 \usetikzlibrary{matrix,chains,scopes,positioning,arrows,fit,shapes.symbols}
 \usetikzlibrary{calc,trees,positioning,decorations.pathreplacing,shapes}
@@ -61,6 +62,20 @@
   tuborg/.style={decorate},
   tubnode/.style={midway, right=2pt},
 }
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+\tikzset{snake arrow/.style=
+{->,
+decorate,
+decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
+}
+
 
 \newenvironment{changemargin}[2]{%
 \begin{list}{}{%
@@ -70,6 +85,7 @@
 \setlength{\listparindent}{\parindent}%
 \setlength{\itemindent}{\parindent}%
 \setlength{\parsep}{\parskip}%
+\setlength{\parindent}{0pt}
 }%
 \item[]}{\end{list}}
 
@@ -82,26 +98,21 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Ligatures=TeX]{Arial}
 \usepackage[textwidth=16cm]{geometry}
-\setlength{\parindent}{0pt}
 
 
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-    text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
-    minimum height=2em]
+
 
 
 
 \usepackage{amssymb}
-%\usepackage{array}
+\usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 %=======================NEW
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+%\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 %=======================
 
 
@@ -127,7 +138,7 @@
 %\lhead{\thepage}
 %\chead{\date}
 \chead{\thepage}
-\rhead{先知书}
+\rhead{摩西五经}
 \lfoot{}
 %\cfoot{\thepage}
 \rfoot{}
@@ -288,14 +299,28 @@
 \titlespacing\subsection{0pt}{12pt plus 2pt minus 8pt}{0pt plus 2pt minus 8pt}
 \titlespacing\subsubsection{0pt}{12pt plus 2pt minus 8pt}{0pt plus 2pt minus 8pt}
 
+
+
+
+
+
+
+
+
+
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\pagestyle{fancy}
+\usepackage{lipsum}
+\usepackage{colortbl,longtable}
+
 \usepackage[toc,page]{appendix}
 \usepackage{caption}
 \usepackage{subcaption}
-%\usepackage{floatrow}
+
 \usepackage{graphicx}
 \usepackage{smartdiagram}
 \usepackage{cjhebrew} 
-\usepackage{float}%table{H}
+
 
 
 \titleclass{\subsubsubsection}{straight}[\subsection]
@@ -356,6 +381,23 @@
 \definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
 \usepackage{xcolor}
 
+
+\definecolor{RED}{RGB}{34,139,34}
+\colorlet{RED}{red}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\usepackage{array,dcolumn,pgf,calc,makecell}
+\usetikzlibrary{arrows.meta,shapes}
+\usepackage{sectsty}
+\sectionfont{\bfseries\Large\raggedright}
+\usepackage{catchfilebetweentags}
+\usepackage{enumerate}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[column=0]{cellspace}
+\setlength{\cellspacetoplimit}{6pt}
+\setlength{\cellspacebottomlimit}{\cellspacetoplimit}
+%\usesmartdiagramlibrary{additions}
+\usepackage{floatrow}
+%\usepackage{float}%table{H}
 \begin{document}
 
 
