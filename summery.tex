@@ -5,7 +5,8 @@
 \usepackage{fontspec}
 \usepackage{xeCJK} %调用 xeCJK 宏包
 %\setmainfont{BiauKai} %設定中文字型
-\setCJKmainfont{SimSun} %设置 CJK 主字体为 SimSun （宋体）
+%\setCJKmainfont{SimSun} %设置 CJK 主字体为 SimSun （宋体）
+\setCJKmainfont{Noto Sans CJK TC}
 \usepackage{fancyhdr}
 %\usepackage{comment}
 \usepackage{forest}
@@ -405,7 +406,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \setlength{\cellspacetoplimit}{6pt}
 \setlength{\cellspacebottomlimit}{\cellspacetoplimit}
 %\usesmartdiagramlibrary{additions}
-
+\usepackage{floatrow}
 %\usepackage{beamerthememetropolis}
 %\usepackage{float}
 \begin{document}
@@ -500,7 +501,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \include{DXianZhiFiles/YL_sajialiya1}%撒迦利亚
 \include{DXianZhiFiles/YL_malaji}%玛拉基
 
-
+\iffalse 
 %总结
 \include{ZongJie/ChuangShiJi}%律法书总结
 \include{ZongJie/LiShiShuZongJie}%历史书总结
@@ -510,6 +511,9 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
 \include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
 \include{ZongJie/soulBody}%先知书名词解释总结
+\fi
+
+
 \iffalse 
 %The following part has been moved into Newtestmenst 
 \appendix
