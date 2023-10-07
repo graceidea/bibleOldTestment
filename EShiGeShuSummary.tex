@@ -320,7 +320,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 
 \usepackage{graphicx}
 \usepackage{smartdiagram}
-\usepackage{cjhebrew} 
+
 
 
 
@@ -371,13 +371,21 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \urlstyle{same}
 \usepackage{polyglossia} 
 \setdefaultlanguage{english}
-\setotherlanguage{hebrew}
-\newfontfamily\englishfont[Mapping=tex-text]{Latin Modern Roman}
-\newfontfamily\hebrewfont[Scale=MatchLowercase]{Ezra SIL}
-\DeclareTextFontCommand{\ez}{\hebrewfont}
-%\newfontfamily\hebrewfont[Script=Hebrew]{SBL Hebrew}
-%\newfontfamily\hebrewfont[Script=Hebrew]{Linux Libertine O}
-\setmainfont{Fontin Sans} %just
+
+
+%\setotherlanguage{hebrew}
+%\newfontfamily\englishfont[Mapping=tex-text]{Latin Modern Roman}
+%\newfontfamily\hebrewfont[Scale=MatchLowercase]{Ezra SIL}
+%\DeclareTextFontCommand{\ez}{\hebrewfont}
+%\setmainfont{Fontin Sans} %just
+
+\usepackage{cjhebrew}
+\usepackage{bookmark}
+%\usepackage[unicode]{hyperref}
+
+\pdfstringdefDisableCommands{%
+ \let\cjRL\@gobble % it can't be supported
+}
 
 %======================NEW
 \usepackage{lastpage}

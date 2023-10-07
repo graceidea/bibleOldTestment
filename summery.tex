@@ -320,7 +320,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 
 \usepackage{graphicx}
 \usepackage{smartdiagram}
-\usepackage{cjhebrew} 
+%\usepackage{cjhebrew} 
 
 
 
@@ -371,10 +371,17 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \urlstyle{same}
 \usepackage{polyglossia} 
 \setdefaultlanguage{english}
-\setotherlanguage{hebrew}
-\newfontfamily\englishfont[Mapping=tex-text]{Latin Modern Roman}
-%\newfontfamily\hebrewfont[Scale=MatchLowercase]{Ezra SIL}
-\DeclareTextFontCommand{\ez}{\hebrewfont}
+%\setotherlanguage{hebrew}
+%\newfontfamily\englishfont[Mapping=tex-text]{Latin Modern Roman}
+%%\newfontfamily\hebrewfont[Scale=MatchLowercase]{Ezra SIL}
+%\DeclareTextFontCommand{\ez}{\hebrewfont}
+\usepackage{cjhebrew}
+\usepackage{bookmark}
+%\usepackage[unicode]{hyperref}
+\pdfstringdefDisableCommands{%
+ \let\cjRL\@gobble % it can't be supported
+}
+
 
 
 %======================NEW
@@ -406,7 +413,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \setlength{\cellspacetoplimit}{6pt}
 \setlength{\cellspacebottomlimit}{\cellspacetoplimit}
 %\usesmartdiagramlibrary{additions}
-\usepackage{floatrow}
+
 %\usepackage{beamerthememetropolis}
 %\usepackage{float}
 \begin{document}
@@ -470,7 +477,7 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 
 
 %诗歌书
-\include{EShiGeShuFiles/job} %
+\include{EShiGeShuFiles/Job} %
 \include{EShiGeShuFiles/PsalmVol1}%1-41
 \include{EShiGeShuFiles/PsalmVol2}%42-72
 \include{EShiGeShuFiles/PsalmVol3}%73-89
@@ -501,26 +508,11 @@ decoration={snake,amplitude=.4mm,segment length=2mm,post length=1mm}}
 \include{DXianZhiFiles/YL_sajialiya1}%撒迦利亚
 \include{DXianZhiFiles/YL_malaji}%玛拉基
 
-\iffalse 
-%总结
-\include{ZongJie/ChuangShiJi}%律法书总结
-\include{ZongJie/LiShiShuZongJie}%历史书总结
-\include{ZongJie/BeiLuGuiHui}%被掳归回总结
-\include{ZongJie/ShiPian}%诗篇的总结
-\include{EShiGeShuFiles/PsalmLetters}%诗篇的总结
-\include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
-\include{ZongJie/XianZhiShuMingCi}%先知书名词解释总结
-\include{ZongJie/soulBody}%先知书名词解释总结
-\fi
 
 
-\iffalse 
-%The following part has been moved into Newtestmenst 
-\appendix
-\begin{appendices}
-\input{ZongJie/DiMingRenMing/DiMing}%
-\input{ZongJie/DiMingRenMing/RenMing}
-\end{appendices}
-\fi
+%Claim #: 113490501000
+%Claim #: 113476172100
+
+
 
 \end{document}
