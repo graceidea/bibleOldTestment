@@ -1,0 +1,10 @@
+xelatex summery.tex
+mv summery.pdf ../biblePDF/OldTestment.pdf
+rm *.aux
+rm *.lof
+rm *.log
+rm *.lot
+rm *.out
+rm *.toc
+
+

@@ -1,0 +1,14 @@
+xelatex AMoXiSummery
+xelatex BLiShiSummery
+xelatex CBeiLuSummery
+xelatex DaXianZhi
+xelatex EShiGeShuSummary
+mv *.pdf ../biblePDF/
+rm *.aux
+rm *.lof
+rm *.log
+rm *.lot
+rm *.out
+rm *.toc
+
+
