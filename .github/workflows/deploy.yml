@@ -1,0 +1,32 @@
+name: Build and Deploy LaTeX Book
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: summery.tex
+          latexmk_use_xelatex: true
+          args: "-v -pdfxe -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape"
+
+      - name: Move PDF to deployment folder
+        run: |
+          mkdir public
+          mv summery.pdf public/index.pdf
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=index.pdf"></head><body><p>Redirecting to book PDF... If it does not load, <a href="index.pdf">click here</a>.</p></body></html>' > public/index.html
+
+      - name: Deploy to GitHub Pages Branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
